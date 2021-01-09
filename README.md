@@ -32,7 +32,7 @@
 
 ## Extension Settings
 
-- `interview.workspaceFolder`:  文件夹地址
+- `interview.workspaceFolder`: 文件夹地址
 
 ## Known Issues
 
