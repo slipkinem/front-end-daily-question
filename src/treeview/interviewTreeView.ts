@@ -10,9 +10,10 @@ import {
 import * as vscode from "vscode";
 import * as path from "path";
 import { getProblemList } from "../service";
+import { login } from "../command/login";
 
 export class Interview implements TreeDataProvider<Question> {
-	constructor(private context?: vscode.ExtensionContext) {}
+	constructor(private context: vscode.ExtensionContext) {}
 
 	private _onDidChangeTreeData: EventEmitter<any> = new EventEmitter<any>();
 
@@ -51,6 +52,15 @@ export class Interview implements TreeDataProvider<Question> {
 						index === 0 ? true : false
 					)
 			);
+			if (!this.context.globalState.get("login")) {
+				vscode.window
+					.showWarningMessage("请先点击此处登录", "登录")
+					.then((result) => {
+						if (result === "登录") {
+							login(this.context);
+						}
+					});
+			}
 			return arr;
 		} catch (e) {
 			window.showErrorMessage("获取数据失败，请稍后刷新！");
