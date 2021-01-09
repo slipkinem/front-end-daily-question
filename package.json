@@ -74,7 +74,11 @@
 		"commands": [
 			{
 				"command": "interview.refresh",
-				"title": "刷新"
+				"title": "Refresh",
+				"icon": {
+					"light": "media/light/refresh.svg",
+					"dark": "media/dark/refresh.svg"
+				}
 			},
 			{
 				"command": "interview.openAnswerByInline",
@@ -82,7 +86,11 @@
 			},
 			{
 				"command": "zffe.login",
-				"title": "登录"
+				"title": "登录",
+				"icon": {
+					"light": "media/light/login.svg",
+					"dark": "media/dark/login.svg"
+				}
 			}
 		],
 		"configuration": [

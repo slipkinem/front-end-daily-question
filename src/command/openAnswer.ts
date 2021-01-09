@@ -8,7 +8,7 @@ export async function openAnswer(
 	document: vscode.TextDocument,
 	context: vscode.ExtensionContext
 ): Promise<void> {
-	if (!context.globalState.get("login", false)) {
+	if (!context.globalState.get("login")) {
 		vscode.window
 			.showWarningMessage("请先点击此处登录", "登录")
 			.then((result) => {
