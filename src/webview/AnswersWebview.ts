@@ -38,12 +38,21 @@ export class AnswersWebview extends AbstractWebview {
 			data,
 		} = this.answersRes;
 		if (!success) return `<h2>${errorMsg}</h2>`;
-		const prefix = `
+		let prefix = "";
+		if (refer_answer === "仅限VIP查看") {
+			prefix = `
+            <h2>${subject_name}</h2>
+            <blockquote>${subject_content}</blockquote>
+            <h2>大家的答案：</h2>`;
+		} else {
+			prefix = `
             <h2>${subject_name}</h2>
             <blockquote>${subject_content}</blockquote>
             <h2>参考答案：</h2>
             <pre>${refer_answer}</pre>
             <h2>大家的答案：</h2>`;
+		}
+
 		const list = data.map((it) => {
 			return `<li><pre>${it.answer_content}</pre></li>`;
 		});

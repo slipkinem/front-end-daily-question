@@ -2,13 +2,20 @@ import * as vscode from "vscode";
 import { AnswersWebview } from "../webview/AnswersWebview";
 import { getDayId } from "../utils/getDayId";
 import { instance } from "../service";
+import { login } from "./login";
 
 export async function openAnswer(
 	document: vscode.TextDocument,
 	context: vscode.ExtensionContext
 ): Promise<void> {
 	if (!context.globalState.get("login", false)) {
-		vscode.window.showWarningMessage("请先登录");
+		vscode.window
+			.showWarningMessage("请先点击此处登录", { modal: true }, "登录")
+			.then((result) => {
+				if (result === "登录") {
+					login(context);
+				}
+			});
 		return;
 	}
 

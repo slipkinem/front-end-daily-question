@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { createAnswer } from "../service";
 import { getDayId } from "../utils/getDayId";
+import { login } from "./login";
 
 export async function postAnswer(
 	document: vscode.TextDocument,
@@ -8,7 +9,13 @@ export async function postAnswer(
 	context: vscode.ExtensionContext
 ) {
 	if (!context.globalState.get("login", false)) {
-		vscode.window.showWarningMessage("请先登录");
+		vscode.window
+			.showWarningMessage("请先点击此处登录", { modal: true }, "登录")
+			.then((result) => {
+				if (result === "登录") {
+					login(context);
+				}
+			});
 		return;
 	}
 
