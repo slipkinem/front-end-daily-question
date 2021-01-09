@@ -10,7 +10,7 @@ export async function postAnswer(
 ) {
 	if (!context.globalState.get("login", false)) {
 		vscode.window
-			.showWarningMessage("请先点击此处登录", { modal: true }, "登录")
+			.showWarningMessage("请先点击此处登录", "登录")
 			.then((result) => {
 				if (result === "登录") {
 					login(context);

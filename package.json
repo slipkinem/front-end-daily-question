@@ -82,11 +82,7 @@
 			},
 			{
 				"command": "zffe.login",
-				"title": "登录",
-				"icon": {
-					"light": "media/light/login.svg",
-					"dark": "media/dark/login.svg"
-				}
+				"title": "登录"
 			}
 		],
 		"configuration": [
