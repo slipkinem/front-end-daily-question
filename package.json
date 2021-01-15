@@ -7,6 +7,13 @@
 	"engines": {
 		"vscode": "^1.49.0"
 	},
+	"keywords": [
+		"vue",
+		"react",
+		"前端",
+		"面试",
+		"学习"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/everest-architecture/front-end-daily-question"
@@ -17,7 +24,8 @@
 	],
 	"license": "MIT",
 	"activationEvents": [
-		"onView:interview"
+		"onView:interview",
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -83,6 +91,10 @@
 			{
 				"command": "interview.openAnswerByInline",
 				"title": "题解"
+			},
+			{
+				"command": "interview.openTips",
+				"title": "提示"
 			},
 			{
 				"command": "zffe.login",
