@@ -11,6 +11,13 @@ export async function activate(
 	context: vscode.ExtensionContext
 ): Promise<void> {
 	try {
+		window
+			.showInformationMessage("面试题更新了！快去做一下吧！", "去看题")
+			.then((result) => {
+				if (result === "去看题") {
+					vscode.commands.executeCommand("workbench.view.extension.interview");
+				}
+			});
 		// -------- interview 相关 -------------
 		const interviewProvider = new Interview(context);
 		window.createTreeView("interview", {
