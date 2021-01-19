@@ -118,12 +118,14 @@ GET /api/answers/:day_id
 | subject_content | 字符串       | 题目内容                      |
 | subject_type    | 字符串       | 题目类型，目前有两种,md 和 js |
 | refer_answer    | 字符串       | 参考答案                      |
+| ownAnswer       | 字符串          | 自己的回答                 |
 | data            | 回答对象数组 | 全部回答                      |
 
 #### 回答对象
 
 | 变量名         | 类型   | 说明     |
 | :------------- | :----- | :------- |
+| git_name      | 字符串   | 用户名  |
 | answer_id      | 数字   | 回答 ID  |
 | answer_content | 字符串 | 回答内容 |
 
