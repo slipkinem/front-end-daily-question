@@ -15,19 +15,41 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
 		document: vscode.TextDocument
 	): vscode.ProviderResult<vscode.CodeLens[]> {
 		const content: string = document.getText();
-
+		let ext: string | undefined;
+		if (document.fileName.endsWith(".md")) {
+			ext = "md";
+		}
+		if (document.fileName.endsWith(".js")) {
+			ext = "js";
+		}
 		let codeLensLine: number = document.lineCount - 1;
 		for (let i: number = document.lineCount - 1; i >= 0; i--) {
 			const lineContent: string = document.lineAt(i).text;
-			if (lineContent.indexOf("*[interview]: end") >= 0) {
+			if (ext === "md" && lineContent.indexOf("*[interview]: end") >= 0) {
+				codeLensLine = i;
+				break;
+			}
+			if (ext === "js" && lineContent.indexOf("// @interview end") >= 0) {
 				codeLensLine = i;
 				break;
 			}
 		}
+		if (ext === void 0) {
+			return [];
+		}
 
 		if (
-			content.indexOf("*[interview]: start") < 0 ||
-			content.indexOf("*[interview]: end") < 0
+			(content.indexOf("*[interview]: start") < 0 ||
+				content.indexOf("*[interview]: end") < 0) &&
+			ext === "md"
+		) {
+			return [];
+		}
+
+		if (
+			(content.indexOf("// @interview start") < 0 ||
+				content.indexOf("// @interview end") < 0) &&
+			ext === "js"
 		) {
 			return [];
 		}

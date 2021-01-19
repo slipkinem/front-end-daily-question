@@ -21,5 +21,5 @@ export enum DescriptionConfiguration {
 
 export function filterInvalidPath(path: string) {
 	const reg = new RegExp('[\\\\/:*?"<>|]', "g");
-	return path.replace(reg, "");
+	return path.replace(reg, "").replace("\n", "");
 }
