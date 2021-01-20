@@ -30,6 +30,7 @@ export async function openAnswer(
 		["user:email"],
 		{ createIfNone: true }
 	);
+	const gitLabel = account.label;
 	const gitId = Number(account.id);
 	const {
 		hasSelfAnswer,
