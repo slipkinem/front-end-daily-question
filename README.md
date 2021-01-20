@@ -38,6 +38,11 @@
 
 ## Release Notes
 
+### release 1.0.5
+
+1. 加入 markdownIt 处理 md 样式
+2. 修复部分 bug
+
 ### release 1.0.1
 
 1. 提交自己答案后才能查看题解

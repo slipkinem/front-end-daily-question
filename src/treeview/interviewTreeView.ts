@@ -11,6 +11,7 @@ import * as vscode from "vscode";
 import * as path from "path";
 import { getProblemList } from "../service";
 import { login } from "../command/login";
+import { filterInvalidPath } from "../shared";
 
 export class Interview implements TreeDataProvider<Question> {
 	constructor(private context: vscode.ExtensionContext) {}
@@ -38,20 +39,20 @@ export class Interview implements TreeDataProvider<Question> {
 		// return [a]
 		try {
 			let result = await getProblemList();
-			let arr = result.data.map(
-				(ele, index) =>
-					new Question(
-						`${ele.day_id}.${ele.name}`,
-						ele.publish_date,
-						{
-							command: "interview.openQuestion",
-							title: "",
-							arguments: [ele],
-						},
-						this.context,
-						index === 0 ? true : false
-					)
-			);
+			let arr = result.data.map((ele, index) => {
+				filterInvalidPath;
+				return new Question(
+					`${ele.day_id}.${filterInvalidPath(ele.name)}`,
+					ele.publish_date,
+					{
+						command: "interview.openQuestion",
+						title: "",
+						arguments: [ele],
+					},
+					this.context,
+					index === 0 ? true : false
+				);
+			});
 			if (!this.context.globalState.get("login")) {
 				vscode.window
 					.showWarningMessage("请先点击此处登录", "登录")

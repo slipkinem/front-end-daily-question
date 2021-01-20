@@ -52,6 +52,15 @@ export async function postAnswer(
 
 function pickUserAnswer(content: string): string {
 	const regex = /\*\[interview\]: start(.*?)\*\[interview\]: end/s;
-	const [, answer = ""] = regex.exec(content) || [];
-	return answer.trim();
+	const regexJs = /\/\/ @interview start(.*?)\/\/ @interview end/s;
+	if (regex.exec(content)) {
+		const [, answer = ""] = regex.exec(content) || [];
+		return answer.trim();
+	} else if (regexJs.exec(content)) {
+		const [, answer = ""] = regexJs.exec(content) || [];
+		// TODO: XSS规则会把部分符号转译
+		// return "```javascript \n" + answer.trim() + "\n```";
+		return answer.trim();
+	}
+	return "";
 }

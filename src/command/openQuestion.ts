@@ -56,7 +56,7 @@ function getCodeTemplate(type: "md" | "js", content: string) {
 		return `// Problem: ${content}
 // @interview start
 
-// @interview start
+// @interview end
 `;
 	}
 }
