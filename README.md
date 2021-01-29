@@ -2,20 +2,13 @@
 
 一个前端刷题插件
 
-## how to use
+## 如何使用
 
 1. 在 vscode 搜前端每日一题，或者 [在 vscode marketplace 上下载](https://marketplace.visualstudio.com/items?itemName=everest-architecture.front-end-daily-question)
 2. 安装完成后，vscode 左侧栏会出现一个新图标，点击进去就能看我们的练习题了。
 3. 点击想做的题目，会弹出 4 个选择框。选择其中一个会自动生成面试题文件，到你指定的 workplace。（ps. 建议在你专门刷题的文件夹下使用，那么就不会每次都弹出选择框了）
 4. 请在 start 和 end 之间作答。
 5. 下方会有提交答案和查看题解的按钮。提交答案，会提交你在 start 和 end 之间的答案。
-
-## how to contribute
-
-- 接口文档 https://github.com/everest-architecture/front-end-daily-question/blob/main/packages/requirements/API.md
-- 项目看板，可以在上面领任务 https://github.com/everest-architecture/front-end-daily-question/projects/1
-- fork 下来，完成你的需求，提交 Pull Request，就可以提交了参与贡献了！
-- 目前已经加入了 git husky ，提交请符合 [commit 规范](https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 
 ## Features
 
