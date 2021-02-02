@@ -7,11 +7,15 @@ import { postAnswer } from "./command/postAnswer";
 import { Interview } from "./treeview/interviewTreeView";
 import { login } from "./command/login";
 import { SidebarProvider } from "./webview/EnglishSiderBarWebview";
+import {
+	shouldUpdateNotification,
+	setShouldUpdateNotification,
+} from "./shared/settingUtils";
 export async function activate(
 	context: vscode.ExtensionContext
 ): Promise<void> {
 	try {
-		let UpdateNotification = context.globalState.get("UpdateNotification");
+		let UpdateNotification: boolean = shouldUpdateNotification();
 		if (!UpdateNotification || UpdateNotification) {
 			window
 				.showInformationMessage(
@@ -25,9 +29,8 @@ export async function activate(
 							"workbench.view.extension.interview"
 						);
 					} else if (result === "不再提醒") {
-						context.globalState.update("UpdateNotification", false).then(() => {
-							window.showInformationMessage("已经关闭更新提醒");
-						});
+						setShouldUpdateNotification(false);
+						window.showInformationMessage("已经关闭更新提醒");
 					}
 				});
 		}

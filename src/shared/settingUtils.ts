@@ -4,7 +4,12 @@ import { DescriptionConfiguration } from "../shared";
 export function getWorkspaceConfiguration(): WorkspaceConfiguration {
 	return workspace.getConfiguration("interview");
 }
-
+export function shouldUpdateNotification(): boolean {
+	return getWorkspaceConfiguration().get<boolean>("updateNotification", true);
+}
+export function setShouldUpdateNotification(updateNotification: boolean): void {
+	getWorkspaceConfiguration().update("updateNotification", updateNotification);
+}
 export function shouldHideSolvedProblem(): boolean {
 	return getWorkspaceConfiguration().get<boolean>("hideSolved", false);
 }
