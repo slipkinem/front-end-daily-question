@@ -1,14 +1,25 @@
-import { workspace, WorkspaceConfiguration } from "vscode";
+import { workspace, WorkspaceConfiguration, ConfigurationTarget } from "vscode";
 import { DescriptionConfiguration } from "../shared";
 
 export function getWorkspaceConfiguration(): WorkspaceConfiguration {
 	return workspace.getConfiguration("interview");
 }
 export function shouldUpdateNotification(): boolean {
+	if (getWorkspaceConfiguration().get("updateNotification") === "") {
+		getWorkspaceConfiguration().update(
+			"updateNotification",
+			true,
+			ConfigurationTarget.Global
+		);
+	}
 	return getWorkspaceConfiguration().get<boolean>("updateNotification", true);
 }
 export function setShouldUpdateNotification(updateNotification: boolean): void {
-	getWorkspaceConfiguration().update("updateNotification", updateNotification);
+	getWorkspaceConfiguration().update(
+		"updateNotification",
+		updateNotification,
+		ConfigurationTarget.Global
+	);
 }
 export function shouldHideSolvedProblem(): boolean {
 	return getWorkspaceConfiguration().get<boolean>("hideSolved", false);

@@ -16,7 +16,7 @@ export async function activate(
 ): Promise<void> {
 	try {
 		let UpdateNotification: boolean = shouldUpdateNotification();
-		if (!UpdateNotification || UpdateNotification) {
+		if (UpdateNotification) {
 			window
 				.showInformationMessage(
 					"有新的题目更新了啦,快去挑战一下吧！",

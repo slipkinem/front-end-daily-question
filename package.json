@@ -125,6 +125,12 @@
 						"scope": "application",
 						"description": "The path of the workspace folder to store the problem files.",
 						"default": ""
+					},
+					"interview.updateNotification": {
+						"type": "boolean",
+						"scope": "application",
+						"description": "是否显示提醒⏰, true 为显示，false 为隐藏",
+						"default": ""
 					}
 				},
 				"interview.editor.shortcuts": {
