@@ -31,7 +31,7 @@ export async function selectWorkspaceFolder(): Promise<string> {
 			],
 			{
 				placeHolder:
-					"The FEInterview workspace folder is not opened in VS Code, would you like to open it?",
+					"当前窗口没有打开练习题的工作目录，请选择你的打开方式？（如果在对应目录里将不会提醒）",
 			}
 		);
 
@@ -110,7 +110,7 @@ async function determineFEInterviewFolder(): Promise<string> {
 	const choice:
 		| IQuickItemEx<string>
 		| undefined = await vscode.window.showQuickPick(picks, {
-		placeHolder: "Select where you would like to save your question files",
+		placeHolder: "选择存放习题的工作目录",
 	});
 	if (!choice) {
 		result = "";
@@ -170,8 +170,8 @@ export async function showDirectorySelectDialog(
 }
 
 enum OpenOption {
-	justOpenFile = "Just open the problem file",
-	openInCurrentWindow = "Open in current window",
-	openInNewWindow = "Open in new window",
-	addToWorkspace = "Add to workspace",
+	justOpenFile = "只打开习题文件不替换工作目录",
+	openInCurrentWindow = "在当前窗口打开工作目录",
+	openInNewWindow = "在新窗口打开工作目录",
+	addToWorkspace = "添加新的习题目录",
 }

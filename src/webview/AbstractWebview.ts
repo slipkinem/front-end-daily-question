@@ -12,10 +12,17 @@ export abstract class AbstractWebview implements vscode.Disposable {
 
 	protected showWebviewInternal(): void {
 		const { title, viewColumn, preserveFocus } = this.getWebviewOption();
-		this.panel = vscode.window.createWebviewPanel(this.viewType, title, {
-			viewColumn,
-			preserveFocus,
-		});
+		this.panel = vscode.window.createWebviewPanel(
+			this.viewType,
+			title,
+			{
+				viewColumn,
+				preserveFocus,
+			},
+			{
+				enableScripts: true,
+			}
+		);
 		this.panel.webview.html = this.getWebviewContent();
 	}
 
