@@ -10,13 +10,10 @@
 4. 请在 start 和 end 之间作答。
 5. 下方会有提交答案和查看题解的按钮。提交答案，会提交你在 start 和 end 之间的答案。
 
-## 如何交流
+## 如何加入交流群
 
-- 欢迎加入每日一题微信交流群
-  ![dailyquestion](https://img.zhufengpeixun.com/dailyquestion.jpg)
-
-- 如果群二维码失效可以加此微信拉入交流群
-- ![zry](https://img.zhufengpeixun.com/her.jpg)
+- 扫描微信可以加好友拉入微信交流群一起讨论，备注为 加每日一题
+- ![her](https://img.zhufengpeixun.com/her.jpg)
 
 ## Features
 
