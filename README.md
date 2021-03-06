@@ -1,5 +1,9 @@
 # 前端每日一题
 
+[![Marketplace](https://img.shields.io/visual-studio-marketplace/v/everest-architecture.front-end-daily-question.svg?label=Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=everest-architecture.front-end-daily-question)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/everest-architecture.front-end-daily-question.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=everest-architecture.front-end-daily-question)
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/everest-architecture.front-end-daily-question.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=giscafer.leek-fund)
+
 一个前端刷题插件
 
 ## 如何使用
