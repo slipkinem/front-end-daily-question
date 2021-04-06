@@ -31,12 +31,6 @@ export class Interview implements TreeDataProvider<Question> {
 	}
 
 	async getQuestions() {
-		// const a = new Question(`111`, '111', {
-		//   command: "interview.openQuestion",
-		//   title: "",
-		//   arguments: [{ name: '1', type: 'md', content: '123', day_id: 1 }],
-		// })
-		// return [a]
 		try {
 			let result = await getProblemList();
 			let arr = result.data.map((ele, index) => {
@@ -50,7 +44,8 @@ export class Interview implements TreeDataProvider<Question> {
 						arguments: [ele],
 					},
 					this.context,
-					index === 0 ? true : false
+					index === 0 ? true : false,
+					ele.answered
 				);
 			});
 			if (!this.context.globalState.get("login")) {
@@ -76,14 +71,17 @@ export class Question extends TreeItem {
 		public readonly date: string,
 		public readonly command?: Command,
 		public readonly context?: vscode.ExtensionContext,
-		public readonly isNew: boolean = false
+		public readonly isNew: boolean = false,
+		public readonly hasComplete: boolean = true
 	) {
 		super(label);
 		this.tooltip = `${this.label}`;
 		this.description = `${this.date}`;
 	}
 
-	public iconPath? = this.isNew
+	public iconPath? = this.hasComplete
+		? this.context?.asAbsolutePath(path.join("media", "checkcircle.svg"))
+		: this.isNew
 		? this.context?.asAbsolutePath(path.join("media", "new.svg"))
 		: "";
 }

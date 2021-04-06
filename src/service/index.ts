@@ -1,5 +1,5 @@
 import axios from "axios";
-import { window } from "vscode";
+import { authentication, window } from "vscode";
 const baseURL = "http://daily.zhufengpeixun.com";
 // const baseURL = "http://dailytest.zhufengpeixun.com";
 // const baseURL = "http://127.0.0.1:3021";
@@ -34,9 +34,11 @@ interface IRes<T> {
 interface IListQuery {
 	current?: number;
 	pageSize?: number;
+	gitId?: number;
 }
 
 export interface ListItem {
+	answered: boolean;
 	name: string;
 	day_id: number;
 	publish_date: string;
@@ -46,12 +48,21 @@ export interface ListItem {
 
 type IListRes = IRes<ListItem[]>;
 
-export const getProblemList = (
+export const getProblemList = async (
 	params: IListQuery = {
 		current: 1,
 		pageSize: 9999,
 	}
 ): Promise<IListRes> => {
+	const { account } = await authentication.getSession(
+		"github",
+		["user:email"],
+		{ createIfNone: true }
+	);
+	const gitId = Number(account.id);
+	if (gitId) {
+		params.gitId = gitId;
+	}
 	return instance.get("/api/questions", { params });
 };
 
