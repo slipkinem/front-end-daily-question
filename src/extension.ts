@@ -6,11 +6,14 @@ import { openAnswer } from "./command/openAnswer";
 import { postAnswer } from "./command/postAnswer";
 import { Interview } from "./treeview/interviewTreeView";
 import { login } from "./command/login";
+import { YQauth } from "./command/YQauth";
+
 import { SidebarProvider } from "./webview/EnglishSiderBarWebview";
 import {
 	shouldUpdateNotification,
 	setShouldUpdateNotification,
 } from "./shared/settingUtils";
+import { saveAnswer } from "./command/YQsave";
 export async function activate(
 	context: vscode.ExtensionContext
 ): Promise<void> {
@@ -58,6 +61,12 @@ export async function activate(
 		});
 		commands.registerCommand("zffe.login", () => {
 			login(context);
+		});
+		commands.registerCommand("zffe.YQlogin", () => {
+			YQauth(context);
+		});
+		commands.registerCommand("zffe.YQsave", (doc, content) => {
+			saveAnswer(doc, content, context);
 		});
 		context.subscriptions.push(codeLensController);
 		// -------- interview 相关 -------------

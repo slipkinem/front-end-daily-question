@@ -44,6 +44,11 @@
 		"menus": {
 			"view/title": [
 				{
+					"command": "zffe.YQlogin",
+					"when": "view == interview",
+					"group": "navigation"
+				},
+				{
 					"command": "zffe.login",
 					"when": "view == interview",
 					"group": "navigation"
@@ -114,6 +119,14 @@
 				"icon": {
 					"light": "media/light/login.svg",
 					"dark": "media/dark/login.svg"
+				}
+			},
+			{
+				"command": "zffe.YQlogin",
+				"title": "语雀授权",
+				"icon": {
+					"light": "media/yuque.svg",
+					"dark": "media/yuque.svg"
 				}
 			}
 		],

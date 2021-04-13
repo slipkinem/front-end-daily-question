@@ -77,6 +77,14 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
 				arguments: [document],
 			})
 		);
+
+		codeLens.push(
+			new vscode.CodeLens(range, {
+				title: "🐦保存到语雀",
+				command: "zffe.YQsave",
+				arguments: [document, content],
+			})
+		);
 		return codeLens;
 	}
 }
