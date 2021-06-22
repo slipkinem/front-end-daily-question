@@ -141,10 +141,10 @@
 						"default": ""
 					},
 					"interview.updateNotification": {
-						"type": "boolean",
+						"type": "number",
 						"scope": "application",
-						"description": "是否显示提醒⏰, true 为显示，false 为隐藏",
-						"default": ""
+						"description": "是否显示提醒⏰, 根据时间戳是否差3天定",
+						"default": "0"
 					}
 				},
 				"interview.editor.shortcuts": {

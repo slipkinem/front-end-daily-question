@@ -4,20 +4,20 @@ import { DescriptionConfiguration } from "../shared";
 export function getWorkspaceConfiguration(): WorkspaceConfiguration {
 	return workspace.getConfiguration("interview");
 }
-export function shouldUpdateNotification(): boolean {
-	if (getWorkspaceConfiguration().get("updateNotification") === "") {
+export function shouldUpdateNotification(): number {
+	if (getWorkspaceConfiguration().get("updateNotification")) {
 		getWorkspaceConfiguration().update(
 			"updateNotification",
-			true,
+			+new Date(),
 			ConfigurationTarget.Global
 		);
 	}
-	return getWorkspaceConfiguration().get<boolean>("updateNotification", true);
+	return getWorkspaceConfiguration().get<number>("updateNotification", 0);
 }
-export function setShouldUpdateNotification(updateNotification: boolean): void {
+export function setShouldUpdateNotification(): void {
 	getWorkspaceConfiguration().update(
 		"updateNotification",
-		updateNotification,
+		+new Date(),
 		ConfigurationTarget.Global
 	);
 }

@@ -18,8 +18,9 @@ export async function activate(
 	context: vscode.ExtensionContext
 ): Promise<void> {
 	try {
-		let UpdateNotification: boolean = shouldUpdateNotification();
-		if (UpdateNotification) {
+		let diff = 86400000 * 3;
+		let UpdateNotification: number = shouldUpdateNotification();
+		if (+new Date() - UpdateNotification >= diff) {
 			window
 				.showInformationMessage(
 					"有新的题目更新了啦,快去挑战一下吧！",
@@ -32,7 +33,7 @@ export async function activate(
 							"workbench.view.extension.interview"
 						);
 					} else if (result === "不再提醒") {
-						setShouldUpdateNotification(false);
+						setShouldUpdateNotification();
 						window.showInformationMessage("已经关闭更新提醒");
 					}
 				});
