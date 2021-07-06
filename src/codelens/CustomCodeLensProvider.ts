@@ -1,7 +1,8 @@
 import * as vscode from "vscode";
 
 export class CustomCodeLensProvider implements vscode.CodeLensProvider {
-	private onDidChangeCodeLensesEmitter: vscode.EventEmitter<void> = new vscode.EventEmitter<void>();
+	private onDidChangeCodeLensesEmitter: vscode.EventEmitter<void> =
+		new vscode.EventEmitter<void>();
 
 	get onDidChangeCodeLenses(): vscode.Event<void> {
 		return this.onDidChangeCodeLensesEmitter.event;
@@ -89,4 +90,5 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
 	}
 }
 
-export const customCodeLensProvider: CustomCodeLensProvider = new CustomCodeLensProvider();
+export const customCodeLensProvider: CustomCodeLensProvider =
+	new CustomCodeLensProvider();

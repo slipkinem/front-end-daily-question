@@ -32,9 +32,7 @@ export async function openAnswer(
 	);
 	const gitLabel = account.label;
 	const gitId = Number(account.id);
-	const {
-		hasSelfAnswer,
-	}: { hasSelfAnswer: boolean } = await instance.get(
+	const { hasSelfAnswer }: { hasSelfAnswer: boolean } = await instance.get(
 		`/api/searchHasSelfAnswer`,
 		{ params: { gitId, dayId } }
 	);

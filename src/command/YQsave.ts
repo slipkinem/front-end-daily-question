@@ -33,8 +33,8 @@ export async function saveAnswer(
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
 				params: {
-					title: basename.replace('\.md', ''),
-					slug: leftPad(dayId, 5, '0'),
+					title: basename.replace(".md", ""),
+					slug: leftPad(dayId, 5, "0"),
 					public: 0,
 					body: content,
 				},

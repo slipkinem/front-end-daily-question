@@ -86,15 +86,17 @@ export async function YQauth(context: vscode.ExtensionContext): Promise<void> {
 						method: "get",
 						url: `https://www.yuque.com/api/v2/users/${userId}/repos`,
 						headers: {
-							"X-Auth-Token": access_token
+							"X-Auth-Token": access_token,
 						},
 						params: {
-							type: "Book"
+							type: "Book",
 						},
 					});
 				}
 				if (Array.isArray(repoRes.data.data)) {
-					repoRes.data.data =repoRes.data.data.filter((item: any) => item.name === '题库')[0];
+					repoRes.data.data = repoRes.data.data.filter(
+						(item: any) => item.name === "题库"
+					)[0];
 				}
 				let repoId = repoRes?.data?.id;
 				!repoId ? (repoId = repoRes?.data?.data?.id) : null;
