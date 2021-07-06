@@ -66,19 +66,36 @@ export async function YQauth(context: vscode.ExtensionContext): Promise<void> {
 				});
 				let userId = userRes?.data?.id;
 				!userId ? (userId = userRes?.data?.data?.id) : null;
-				const repoRes = await axios({
-					method: "post",
-					url: `https://www.yuque.com/api/v2/users/${userId}/repos`,
-					headers: {
-						"X-Auth-Token": access_token,
-						"Content-Type": "application/x-www-form-urlencoded",
-					},
-					params: {
-						name: "题库",
-						slug: "zftk",
-						public: 0,
-					},
-				});
+				let repoRes = null;
+				try {
+					repoRes = await axios({
+						method: "post",
+						url: `https://www.yuque.com/api/v2/users/${userId}/repos`,
+						headers: {
+							"X-Auth-Token": access_token,
+							"Content-Type": "application/x-www-form-urlencoded",
+						},
+						params: {
+							name: "题库",
+							slug: "zftk",
+							public: 0,
+						},
+					});
+				} catch (error) {
+					repoRes = await axios({
+						method: "get",
+						url: `https://www.yuque.com/api/v2/users/${userId}/repos`,
+						headers: {
+							"X-Auth-Token": access_token
+						},
+						params: {
+							type: "Book"
+						},
+					});
+				}
+				if (Array.isArray(repoRes.data.data)) {
+					repoRes.data.data =repoRes.data.data.filter((item: any) => item.name === '题库')[0];
+				}
 				let repoId = repoRes?.data?.id;
 				!repoId ? (repoId = repoRes?.data?.data?.id) : null;
 				repoId ? context.globalState.update("yuqueRepoId", repoId) : null;

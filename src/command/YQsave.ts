@@ -2,6 +2,7 @@ import axios from "axios";
 import * as vscode from "vscode";
 import { YQauth } from "./YQauth";
 import * as path from "path";
+const leftPad = require("left-pad");
 
 export async function saveAnswer(
 	document: vscode.TextDocument,
@@ -32,8 +33,8 @@ export async function saveAnswer(
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
 				params: {
-					title: basename,
-					slug: dayId,
+					title: basename.replace('\.md', ''),
+					slug: leftPad(dayId, 5, '0'),
 					public: 0,
 					body: content,
 				},
